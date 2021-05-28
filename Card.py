@@ -32,6 +32,23 @@ class card:
         elif (self.suit == 'C'):
             cardName += "Clubs"
 
+        faces = {1:'Ace', 11:'Jack', 12:'Queen', 13:'King'}
+        suits = {'D': 'Diamonds', 'H': 'Hearts', 'S': 'Spades', 'C':'Clubs'}
+        cardName = '['
+
+        if (self.value > 1 and self.value <= 10):
+            cardName += self.value
+        else:
+            cardName += faces[self.value]
+        
+        cardName += ' of '
+
+        cardName += suits[self.suit]
+
+        
+
+
+
     def cardValue(self):
         if (self.value <= 10):
             return self.value
