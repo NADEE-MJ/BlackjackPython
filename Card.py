@@ -1,6 +1,3 @@
-
-
-
 class Card:
     value = 0
     suit = ''
@@ -34,7 +31,6 @@ class Card:
             cardName += "Spades"
         elif (self.suit == 'C'):
             cardName += "Clubs"
-
 
     def cardValue(self):
         if (self.value <= 10):
