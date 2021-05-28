@@ -1,4 +1,4 @@
-class Card:
+class card:
     value = 0
     suit = ''
 
