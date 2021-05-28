@@ -1,4 +1,3 @@
-from typing import Sized
 from card import card
 
 class hand(card):
@@ -42,3 +41,16 @@ class hand(card):
                 else:
                     handValue += 1
         return handValue
+
+    def displayHand(self):
+        textCardSize = 13
+        temp = ""
+
+        for i in range(self.sizeHand):
+            temp = self.hand[i].displayCardName()
+            for j in range(len(temp), 21):
+                temp += " "
+            print(temp)
+
+        valueHand = self.handValue()
+        print("Hand value is " + valueHand)
