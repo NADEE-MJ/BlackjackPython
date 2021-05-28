@@ -1,3 +1,4 @@
+# This is the card class
 class card:
     value = 0
     suit = ''
