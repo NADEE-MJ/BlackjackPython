@@ -1,20 +1,54 @@
-import pygame
+import pygame, sys
+from pygame.constants import K_SPACE
 
 pygame.init()
 
-screen = pygame.display.set_mode([500, 500])
+#fps settings
+FPS = 60
+FramePerSec = pygame.time.Clock()
 
-running = True
+#screen settings
+screen = pygame.display.set_mode([750, 750])
+pygame.display.set_caption("Blackjack")
+font = pygame.font.Font(pygame.font.get_default_font(), 20)
 
-while running:
+#colors
+black = (0, 0, 0)
+green = (0, 128, 0)
+
+class cardGUI(pygame.sprite.Sprite):
+    def __init__(self, cardName):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("Cards/%s.png"%(cardName)), (131, 200))
+        self.surf = pygame.Surface((131,200))
+        self.rect = self.surf.get_rect()
+
+    # def update(self):
+    #     pressed_key = pygame.key.get_pressed()
+    #     if pressed_key[K_SPACE]:
+            
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+
+
+text = font.render("Dealer's Cards", True, black)
+
+while True:
     
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
+            sys.exit()
 
-    screen.fill((0, 255, 0))
-    image = pygame.transform.scale(pygame.image.load("Cards/2C.png"), (75, 75))
-    screen.blit(image, (50, 50))
-    pygame.display.flip()
-    
-pygame.quit()
+    screen.fill(green)
+
+    testCard = cardGUI("2C")
+    testCard.draw(screen)
+
+    screen.blit(text, (50, 25))
+
+    pygame.display.update()
+    FramePerSec.tick(FPS)
