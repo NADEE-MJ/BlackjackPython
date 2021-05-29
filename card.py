@@ -17,6 +17,15 @@ class card:
         cardName += ' of ' + suits[self.suit] + ']'
         return cardName
 
+    def cardID(self):
+        faces = {1:'A', 11:'J', 12:'Q', 13:'K'}        
+        cardID = ""
+        if (self.value > 1 and self.value <= 10):
+            cardID += str(self.value) + self.suit
+        else:
+            cardID += faces[self.value] + self.suit
+        return cardID
+
     def cardValue(self):
         if (self.value <= 10):
             return self.value

@@ -21,12 +21,13 @@ class cardGUI(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("Cards/%s.png"%(cardName)), (131, 200))
         self.surf = pygame.Surface((131,200))
-        self.rect = self.surf.get_rect()
+        self.rect = self.surf.get_rect(center = (300, 300))
 
-    # def update(self):
-    #     pressed_key = pygame.key.get_pressed()
-    #     if pressed_key[K_SPACE]:
-            
+    def update(self):
+        pressed_key = pygame.key.get_pressed()
+        if pressed_key[K_SPACE]:
+            return True
+             
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -35,6 +36,7 @@ class cardGUI(pygame.sprite.Sprite):
 
 text = font.render("Dealer's Cards", True, black)
 
+hit = False
 while True:
     
 
@@ -46,7 +48,10 @@ while True:
     screen.fill(green)
 
     testCard = cardGUI("2C")
-    testCard.draw(screen)
+    if hit:
+        testCard.draw(screen)
+    else:
+        hit = testCard.update()
 
     screen.blit(text, (50, 25))
 

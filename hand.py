@@ -31,7 +31,7 @@ class hand():
             else:
                 handValue += cardValue
                 
-        return handValue
+        self.valuehand = handValue
 
     def displayHand(self):
         for handCard in self.hand:
@@ -40,5 +40,10 @@ class hand():
                 temp += " "
             print(temp)
 
-        self.valueHand = self.handValue()
+        self.handValue()
         print("Hand value is " + str(self.valueHand))
+
+    def cardIDs(self):
+        cardIDs = [handCard.cardID() for handCard in self.hand]
+        return cardIDs
+            
