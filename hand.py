@@ -30,6 +30,7 @@ class hand():
                     handValue += 1
                 else:
                     handValue += 11
+                    hasAce = True
             else:
                 handValue += cardValue
         
