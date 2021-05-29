@@ -3,7 +3,6 @@ import random
 
 class deck():
     def __init__(self):
-        self.topCard = 0
         self.cardPile = []
         self.createDeck()
         self.shuffle()
