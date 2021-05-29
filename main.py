@@ -192,4 +192,5 @@ def main():
                 
         FramePerSec.tick(FPS)
 
-main()
+if __name__ == '__main__':
+    main()
