@@ -3,6 +3,7 @@ from card import card
 class hand():
     def __init__(self):
         self.hand = []
+        self.valueHand = self.handValue()
 
     def clearHand(self):
         self.hand = []
@@ -39,4 +40,5 @@ class hand():
                 temp += " "
             print(temp)
 
-        print("Hand value is " + str(self.handValue()))
+        self.valueHand = self.handValue()
+        print("Hand value is " + str(self.valueHand))

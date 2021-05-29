@@ -1,10 +1,6 @@
 from deck import deck
 from hand import hand
 
-'''
-put valueHand back so we don't have to calculate the hand value every time
-'''
-
 d = deck()
 
 player = hand()
@@ -19,7 +15,7 @@ while True:
     player.displayHand()
     dealer.dealHand(d)
 
-    if player.handValue() == 21:
+    if player.valueHand == 21:
         print("You Win!")
         playerEndGame = True
     else:
@@ -32,11 +28,11 @@ while True:
             else:
                 playerHit = False
                 playerEndGame = False
-            if player.handValue() > 21:
+            if player.valueHand > 21:
                 print("You Busted!")
                 playerHit = False
                 playerEndGame = True
-            elif player.handValue() == 21:
+            elif player.valueHand == 21:
                 print("You win!!")
                 playerHit = False
                 playerEndGame = True
@@ -47,26 +43,26 @@ while True:
         while dealerHit:
             print("Here are the dealer's cards:")
             dealer.displayHand()
-            if dealer.handValue() == 21:
+            if dealer.valueHand == 21:
                 print("THe dealer wins!")
                 dealerHit = False
                 dealerEndGame = True
-            elif dealer.handValue() > 21:
+            elif dealer.valueHand > 21:
                 print("You win!")
                 dealerHit = False
                 dealerEndGame = True
-            elif dealer.handValue() >= 17:
+            elif dealer.valueHand >= 17:
                 dealerHit = False
-            elif dealer.handValue() < 17:
+            elif dealer.valueHand < 17:
                 dealer.hit(d)
                 dealerHit = True
                 
         if not dealerEndGame:
-            if player.handValue() > dealer.handValue():
+            if player.valueHand > dealer.valueHand:
                 print("You win!")
-            elif player.handValue() == dealer.handValue():
+            elif player.valueHand == dealer.valueHand:
                 print("You push!")
-            elif player.handValue() < dealer.handValue():
+            elif player.valueHand < dealer.valueHand:
                 print("You Lose!")
 
     again = input('Pla(y) agai(n)?: ')
