@@ -9,11 +9,11 @@ running = True
 while running:
     
     for event in pygame.event.get():
-        if event.type == pygame.quit:
+        if event.type == pygame.QUIT:
             running = False
 
     screen.fill((0, 255, 0))
-    image = pygame.image.load("Cards/2C.jpg")
+    image = pygame.transform.scale(pygame.image.load("Cards/2C.png"), (75, 75))
     screen.blit(image, (50, 50))
     pygame.display.flip()
     
