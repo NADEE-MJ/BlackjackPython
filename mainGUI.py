@@ -70,6 +70,8 @@ def main():
     #main game loop
     while True:
         
+        d.shuffle()
+        
         screen.fill(green)  
 
         displayText(screen, black, green, "BLACKJACK!", 125, (200, 250))
@@ -106,7 +108,6 @@ def main():
             pygame.display.update()
 
             while True:
-                player.handValue = player.getHandValue() # TODO
                 if player.handValue == 21:
                     time.sleep(0.5)
                     displayText(screen, black, red, "You Win!", 125, (200, 250))
@@ -121,7 +122,6 @@ def main():
                         pygame.display.update()
                         if twoButton(K_h, K_s):
                             player.hit(d)
-                            player.handValue = player.getHandValue() # TODO
                             playerCardIDs = player.cardIDs()
                             displayGUICards(playerCardIDs, screen, 375)
                             displayText(screen, black, green, "%d"%(player.handValue), 20, (100, 520))
