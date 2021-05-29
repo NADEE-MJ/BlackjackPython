@@ -1,2 +1,2 @@
 # BlackJackPython
-Black Jack game written in python using the pygame module.
+BlackJack game written in python using the pygame module.
