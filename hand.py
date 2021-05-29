@@ -31,7 +31,7 @@ class hand():
             else:
                 handValue += cardValue
                 
-        self.valuehand = handValue
+        self.valueHand = handValue
 
     def displayHand(self):
         for handCard in self.hand:
