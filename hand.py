@@ -3,35 +3,39 @@ from card import card
 class hand():
     def __init__(self):
         self.hand = []
-        self.valueHand = self.handValue()
+        self.handValue = self.getHandValue()
 
     def clearHand(self):
         self.hand = []
         
+    def hit(self, deck):
+        self.hand.append(card(deck.cardPile[deck.topCard].value, deck.cardPile[deck.topCard].suit))
+        deck.topCard += 1
+        self.handValue = self.getHandValue()
+    
     def dealHand(self, deck):
         standardHand = 2
 
         for i in range(standardHand):
-            self.hand.append(card(deck.cardPile[deck.topCard].value, deck.cardPile[deck.topCard].suit))
-            deck.topCard += 1
-
-    def hit(self, deck):
-        self.hand.append(card(deck.cardPile[deck.topCard].value, deck.cardPile[deck.topCard].suit))
-        deck.topCard += 1
-
-    def handValue(self):
+            self.hit(deck)
+        self.handValue = self.getHandValue()
+    
+    def getHandValue(self):
         handValue = 0
+        hasAce = False
         for handCard in self.hand:
             cardValue = handCard.cardValue()
             if cardValue == 1:
-                if (handValue + 11) > 21:
+                if hasAce:
                     handValue += 1
                 else:
                     handValue += 11
             else:
                 handValue += cardValue
-                
-        self.valuehand = handValue
+        
+        if hasAce and handValue > 21:
+            handValue -= 10
+        return handValue;
 
     def displayHand(self):
         for handCard in self.hand:
@@ -40,8 +44,7 @@ class hand():
                 temp += " "
             print(temp)
 
-        self.handValue()
-        print("Hand value is " + str(self.valueHand))
+        print("Hand value is " + str(self.handValue))
 
     def cardIDs(self):
         cardIDs = [handCard.cardID() for handCard in self.hand]
