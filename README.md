@@ -1,2 +1,2 @@
 # BlackJackPython
-Texas Hold 'Em game written with python and the pygame module
+Black Jack game written with python and the pygame module
