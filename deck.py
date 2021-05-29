@@ -17,4 +17,5 @@ class deck():
             self.cardPile.append(card(i, 'C'))
 
     def shuffle(self):
+        self.topCard = 0
         random.shuffle(self.cardPile)

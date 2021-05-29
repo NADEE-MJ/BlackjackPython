@@ -8,6 +8,8 @@ def main():
     dealer = hand()
 
     while True:
+        d.shuffle()
+
         player.clearHand()
         dealer.clearHand()
 
